@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nakib Mullick – Personal Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      touch-action: manipulation;
+    }
+
+    body {
+      background: linear-gradient(120deg, #232526 0%, #3a3d7c 50%, #7b2ff2 100%);
+      background-image:
+        url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" stroke="%237b2ff2" stroke-width="2" opacity="0.08"/><rect x="10" y="10" width="80" height="80" rx="20" stroke="%233a3d7c" stroke-width="2" opacity="0.08"/></svg>'),
+        linear-gradient(120deg, #232526 0%, #3a3d7c 50%, #7b2ff2 100%);
+      background-repeat: repeat, no-repeat;
+      background-size: 200px 200px, cover;
+      color: #fff;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      min-width: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Subtle fade-in animation */
+      animation: fadeInBg 1.2s ease;
+    }
+
+    @keyframes fadeInBg {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    header,
+    .section,
+    footer {
+      background: rgba(30, 32, 60, 0.55);
+      backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 8px 0 rgba(123, 47, 242, 0.08);
+      border: 1.5px solid rgba(123, 47, 242, 0.12);
+      margin: 40px auto;
+      padding: 48px 32px;
+      max-width: 900px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+
+    header {
+      padding: 48px 32px 36px 32px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    header h1,
+    h2 {
+      font-family: 'Playfair Display', 'Roboto', 'Arial Black', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      color: #ffd700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 100%;
+    }
+
+    nav {
+      margin-top: 18px;
+    }
+
+    nav a {
+      color: #fff;
+      background: linear-gradient(90deg, #7b2ff2 0%, #f357a8 100%);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 10px 22px;
+      border-radius: 12px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(123, 47, 242, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Roboto', 'Inter', 'Segoe UI', Arial, sans-serif;
+      border: none;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before,
+    .contact-btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #f357a8 0%, #7b2ff2 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+
+    nav a:hover::before,
+    nav a:focus::before,
+    .contact-btn:hover::before,
+    .contact-btn:focus::before {
+      opacity: 0.18;
+    }
+
+    nav a:hover,
+    nav a:focus,
+    .contact-btn:hover,
+    .contact-btn:focus {
+      background: linear-gradient(90deg, #f357a8 0%, #7b2ff2 100%);
+      color: #ffd700;
+      box-shadow: 0 8px 32px rgba(123, 47, 242, 0.22), 0 1.5px 8px 0 rgba(243, 87, 168, 0.12);
+      transform: translateY(-2px) scale(1.07) rotate(-1deg);
+      border: 1.5px solid #ffd700;
+    }
+
+    nav a img,
+    .contact-btn img {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(123, 47, 242, 0.12);
+      background: linear-gradient(135deg, #7b2ff2 60%, #f357a8 100%);
+      padding: 2px;
+      transition: box-shadow 0.2s, background 0.2s, transform 0.3s;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    nav a:hover img,
+    nav a:focus img,
+    .contact-btn:hover img,
+    .contact-btn:focus img {
+      box-shadow: 0 6px 18px rgba(243, 87, 168, 0.22);
+      background: linear-gradient(135deg, #f357a8 60%, #7b2ff2 100%);
+      transform: scale(1.15) rotate(-6deg);
+    }
+
+    .section {
+      padding: 48px 32px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      /* Glassmorphism effect */
+      background: rgba(30, 32, 60, 0.55);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 8px 0 rgba(123, 47, 242, 0.08);
+      border: 1.5px solid rgba(123, 47, 242, 0.12);
+      backdrop-filter: blur(14px) saturate(180%);
+      transition: box-shadow 0.3s, background 0.3s, transform 0.3s;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .section:not(:last-of-type)::after {
+      content: "";
+      display: block;
+      width: 80%;
+      height: 1.5px;
+      background: linear-gradient(90deg, #7b2ff2 0%, #f357a8 100%);
+      opacity: 0.12;
+      margin: 40px auto 0 auto;
+      border-radius: 1px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', 'Roboto', 'Arial Black', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 2.7rem;
+      margin-bottom: 24px;
+      color: #ffd700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 100%;
+    }
+
+    p {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.18rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 24px auto;
+      color: #f5f5f5;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(90deg, #7b2ff2 0%, #f357a8 100%);
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 24px;
+      margin: 0 12px 12px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(123, 47, 242, 0.08);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+      font-size: 1.15rem;
+      border: none;
+      outline: none;
+      min-width: 44px;
+      min-height: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #f357a8 0%, #7b2ff2 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+
+    .contact-btn:hover::before,
+    .contact-btn:focus::before {
+      opacity: 0.18;
+    }
+
+    .contact-btn:hover,
+    .contact-btn:focus {
+      background: linear-gradient(90deg, #f357a8 0%, #7b2ff2 100%);
+      color: #ffd700;
+      box-shadow: 0 8px 32px rgba(123, 47, 242, 0.22), 0 1.5px 8px 0 rgba(243, 87, 168, 0.12);
+      transform: translateY(-2px) scale(1.07) rotate(-1deg);
+      border: 1.5px solid #ffd700;
+    }
+
+    #socialIcons {
+      margin-top: 18px;
+    }
+
+    #socialIcons a {
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #socialIcons a:hover {
+      transform: scale(1.15);
+      box-shadow: 0 4px 16px rgba(123, 47, 242, 0.18);
+      background: rgba(123, 47, 242, 0.08);
+    }
+
+    #socialIcons img {
+      width: 24px;
+      height: 24px;
+      margin: 0 12px;
+      vertical-align: middle;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(123, 47, 242, 0.12);
+      background: linear-gradient(135deg, #7b2ff2 60%, #f357a8 100%);
+      padding: 2px;
+      filter: drop-shadow(0 2px 6px rgba(123, 47, 242, 0.18));
+      transition: filter 0.2s, box-shadow 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    #socialIcons a:hover img {
+      box-shadow: 0 4px 16px rgba(123, 47, 242, 0.18);
+      background: linear-gradient(135deg, #f357a8 60%, #7b2ff2 100%);
+    }
+
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #7b2ff2 60%, #f357a8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 16px rgba(123, 47, 242, 0.18);
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
+      z-index: 100;
+    }
+
+    #scrollToTopBtn:hover {
+      background: linear-gradient(135deg, #f357a8 60%, #7b2ff2 100%);
+      color: #ffd700;
+      box-shadow: 0 8px 32px rgba(123, 47, 242, 0.28);
+      transform: scale(1.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 0 16px 0;
+      margin: 40px auto 0 auto;
+      border-top: 2px solid rgba(123, 47, 242, 0.10);
+      background: rgba(30, 32, 60, 0.55);
+      backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 8px 0 rgba(123, 47, 242, 0.08);
+      border: 1.5px solid rgba(123, 47, 242, 0.12);
+      margin: 32px auto 0 auto;
+      max-width: 900px;
+      transition: box-shadow 0.3s, background 0.3s, border 0.3s;
+    }
+
+    footer:hover {
+      box-shadow: 0 12px 48px 0 rgba(123, 47, 242, 0.22), 0 2px 12px 0 rgba(243, 87, 168, 0.12);
+      background: rgba(60, 65, 120, 0.65);
+      border-top: 2.5px solid #ffd700;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ffd700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+
+      header,
+      .section,
+      footer {
+        max-width: 98vw;
+        padding: 24px 10px;
+        border-radius: 14px;
+        margin: 18px auto;
+      }
+
+      h1,
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      nav a,
+      .contact-btn {
+        padding: 10px 14px;
+        font-size: 1rem;
+        border-radius: 8px;
+        margin: 0 8px 8px 0;
+      }
+
+      .section {
+        padding: 24px 10px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+      }
+
+      .section:not(:last-of-type)::after {
+        margin: 24px auto 0 auto;
+      }
+
+      #featured img {
+        max-width: 90vw;
+      }
+
+      footer {
+        padding: 18px 0 10px 0;
+        margin: 18px auto 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      header,
+      .section,
+      footer {
+        padding: 12px 2px;
+        margin: 8px auto;
+      }
+
+      h1,
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      nav a,
+      .contact-btn {
+        padding: 6px 8px;
+        font-size: 0.95rem;
+        margin: 0 4px 4px 0;
+      }
+
+      .section {
+        padding: 12px 2px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+
+      .section:not(:last-of-type)::after {
+        margin: 12px auto 0 auto;
+      }
+
+      #featured img {
+        max-width: 98vw;
+      }
+
+      footer {
+        padding: 10px 0 6px 0;
+        margin: 8px auto 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Nakib Mullick</h1>
+    <nav aria-label="Main navigation" id="mainNav" style="position:sticky;top:0;z-index:10;">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:mullicknakib337@gmail.com" target="_blank" style="vertical-align: middle;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail"
+          style="width:24px;height:24px;vertical-align:middle;margin-right:5px;">
+        Gmail
+      </a>
+      <a href="https://x.com/NakibMullick?t=Pks0mPHep1J8raQ2bnYLwg&s=09" target="_blank"
+        style="vertical-align: middle;">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f426.png" alt="Twitter"
+          style="width:24px;height:24px;vertical-align:middle;margin-right:5px;">
+        Twitter
+      </a>
+    </nav>
+  </header>
+
+  <section id="home" class="section">
+    <h2>Welcome</h2>
+    <p>Welcome to my personal portfolio. Explore my journey, experiences, and aspirations.</p>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I'm Nakib Mullick, a 23-year-old plant science graduate with a passion for technology and personal growth. My
+      journey began with a small program on Skool, where I started as an appointment setter and gradually took on more
+      roles. Currently, I am working with TitanX, an MVP build agency, contributing to innovative projects.
+      Additionally, I have experience as a moderator for the Skool community 'Halal Setters,' where we train setters to
+      excel in their roles.</p>
+    <p>Outside of work, I am a practicing Muslim with a deep ambition to achieve success in both this life and the
+      hereafter. I am constantly learning and striving to better myself.</p>
+  </section>
+
+  <section id="featured" class="section">
+    <h2>Featured Project</h2>
+    <div style="margin: 24px auto; max-width: 600px; display: flex; flex-direction: column; align-items: center;">
+      <a href="https://www.titanx.dev/" target="_blank" rel="noopener" class="contact-btn"
+        aria-label="Visit TitanX Website"
+        style="font-size:1.15rem; display: inline-flex; align-items: center; justify-content: center;">
+        <img src="https://api.iconify.design/mdi:rocket-launch.svg?color=%23ffd700" alt="TitanX Logo"
+          style="width:32px;height:32px;vertical-align:middle;margin-right:10px;border-radius:8px;">
+        Visit TitanX.dev
+      </a>
+      <p style="margin-top:18px;color:#ffd700;">
+        TitanX is an MVP build agency where I work as an SDR (Sales Development Representative), contributing to
+        innovative projects and product development.
+      </p>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:16px;">
+        <img src="https://api.iconify.design/mdi:rocket-launch.svg?color=%23ffd700" alt="TitanX Logo"
+          style="width:32px;height:32px;margin-bottom:12px;border-radius:8px;">
+        <img src="https://www.titanx.dev/og-image.png" alt=""
+          style="width:100%;max-width:400px;border-radius:12px;box-shadow:0 2px 12px rgba(255,215,0,0.12);">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <img src="https://api.iconify.design/mdi:copyright.svg?color=%23ffd700" alt="Copyright"
+        style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
+      2025 Nakib Mullick. All rights reserved.
+    </p>
+  </footer>
+
+  <button id="scrollToTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+
+  <script>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    let scrollTimeout;
+
+    function handleScroll() {
+      // Throttle scroll event for performance
+      if (scrollTimeout) return;
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+        if (document.documentElement.scrollTop > 20) {
+          scrollToTopBtn.style.display = 'block';
+        } else {
+          scrollToTopBtn.style.display = 'none';
+        }
+      }, 100);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    scrollToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+  <!-- Instructions for local viewing and online sharing -->
+  <div style="display:none;">
+    <h2>Instructions</h2>
+    <ol>
+      <li>Save your code in a file named <code>index.html</code> in your project folder.</li>
+      <li>To view the website locally:
+        <ul>
+          <li>Double-click the <code>index.html</code> file to open it in your browser.</li>
+          <li>Or, right-click and choose "Open with" > your browser.</li>
+        </ul>
+      </li>
+      <li>To share as a link online:
+        <ul>
+          <li>Upload <code>index.html</code> (and any assets) to a web hosting service (e.g., GitHub Pages, Netlify,
+            Vercel).</li>
+          <li>For GitHub Pages:
+            <ol>
+              <li>Create a GitHub repository and push your files.</li>
+              <li>Go to repository settings > Pages, and set the branch to <code>main</code> (or <code>master</code>).
+              </li>
+              <li>GitHub will provide a public link to your site.</li>
+            </ol>
+          </li>
+          <li>For Netlify/Vercel:
+            <ol>
+              <li>Sign up and drag your folder to their dashboard.</li>
+              <li>They will deploy and give you a public link.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Share the generated link with others—they can access your website from any device.</li>
+    </ol>
+  </div>
+</body>
+
+</html>
